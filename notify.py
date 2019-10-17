@@ -53,7 +53,7 @@ if __name__ == '__main__':
                     print(Bitcoin_CLI.call("deriveaddresses", [parsed_ext['descriptor'], "10"]))
                 else:
                     parsed = json.loads(Bitcoin_CLI.call("importmulti", ['[{"desc": "'+parsed_ext['descriptor']+'", "range": '+str(Config.xpub_range)+', "watchonly": true, "internal": false, "timestamp": 0, "label": "'+label+'"}]', '{"rescan": false}']))
-                    parsed = json.loads(Bitcoin_CLI.call("importmulti", ['[{"desc": "'+parsed_int['descriptor']+'", "range": '+str(Config.xpub_range)+', "watchonly": true, "internal": true, "timestamp": 0, "label": "'+label+'"}]', '{"rescan": false}']))
+                    parsed = json.loads(Bitcoin_CLI.call("importmulti", ['[{"desc": "'+parsed_int['descriptor']+'", "range": '+str(Config.xpub_range)+', "watchonly": true, "internal": true, "timestamp": 0}]', '{"rescan": false}']))
                     
         
     if len(sys.argv) == 2 and len(sys.argv[1]) == 64:
