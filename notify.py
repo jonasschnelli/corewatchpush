@@ -68,11 +68,15 @@ if __name__ == '__main__':
                 label=""
                 if item.get('label'):
                     label = item['label']+" / "
+                if item['category'] == "send":
+                    text += "\U0001F534"
+                else:
+                    text += "\U00002705"
                 text += "*"+item['category']+"* amount: "+str(item['amount'])+" via: "+label+item['address']+"\n"
 
         parsed = json.loads(Bitcoin_CLI.call("getbalances"))
         text += "*New trusted balance:* "+str(parsed['watchonly']['trusted'])+"\n"
-        text += "*New tntrusted balance:* "+str(parsed['watchonly']['untrusted_pending'])+"\n"
+        text += "*New untrusted balance:* "+str(parsed['watchonly']['untrusted_pending'])+"\n"
         if (len(Config.blockexplorer) > 0):
             text += "[Blockexplorer]("+Config.blockexplorer+txid+")\n"
         Notify_Telegram.push(text)
