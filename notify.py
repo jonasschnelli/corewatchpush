@@ -6,6 +6,7 @@
 from config import *
 
 from notify_telegram import *
+from notify_email import *
 
 import json
 import subprocess
@@ -79,4 +80,7 @@ if __name__ == '__main__':
         text += "*New untrusted balance:* "+str(parsed['watchonly']['untrusted_pending'])+"\n"
         if (len(Config.blockexplorer) > 0):
             text += "[Blockexplorer]("+Config.blockexplorer+txid+")\n"
-        Notify_Telegram.push(text)
+        Notify_Telegram.push(text)        if "telegram" in Config.notify_channels: 
+            Notify_Telegram.push(text)
+        if "email" in Config.notify_channels:
+            Notify_SMTP.push(text)

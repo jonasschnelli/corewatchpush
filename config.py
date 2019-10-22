@@ -29,8 +29,16 @@ class Config:
 
     # push channels (only telegram for now)
     notify_channels=["telegram"]
+    #notify_channels=["telegram", "email"] #enable in case you want email and smtp
 
     # telegram KEY and chat-ID
     # google the internet how to create a bot, get the key as well as a chat-id
     notify_telegram_key="###"
     notify_telegram_chat_id="###"
+
+    # email notification SMTP
+    notify_email_receiver = "You <you@yourdomain.com>"
+    notify_email_sender = "autosend <autosend@something.com>"
+    notify_email_smtphost = "your.smtp.host"
+    notify_email_smtpuser = "your_smtp_username"
+    notify_email_smtppass = "your_smtp_password"
